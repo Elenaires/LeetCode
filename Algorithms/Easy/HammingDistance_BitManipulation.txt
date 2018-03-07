@@ -1,0 +1,15 @@
+class Solution {
+    public int hammingDistance(int x, int y) {
+        
+        // bitwise XOR - example 1001 ^ 0111 gives 1110 (difference corresponding bit gives 1, else 0)
+        int res = x ^ y;
+        int count = 0;
+        do
+        {
+            count += res & 1; // res & 1 basically tells if the last bit is a 0 or 1 (0 results in 0, 1 results in 1)
+            res = res >> 1; // signed right shift by 1 bit i.e. 1110 >> 1 gives 0111, 0111 >> 1 gives 0011
+        } while(res != 0);
+        
+        return count;
+    }
+}

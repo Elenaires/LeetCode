@@ -1,0 +1,51 @@
+class Solution {
+    public int hammingDistance(int x, int y) {
+        
+        int diffCount = 0;
+        String bitX = Integer.toBinaryString(x);
+        String bitY = Integer.toBinaryString(y);
+        
+        String largerString, smallerString;
+        if(bitX.length() > bitY.length())
+        {
+            largerString = bitX;
+            smallerString = bitY;
+        }
+        else
+        {
+            smallerString = bitX;
+            largerString = bitY;
+        }
+        
+        List<Character> bigList = new ArrayList<Character>();
+        List<Character> smallList = new ArrayList<Character>();
+        
+        int maxLength = Math.max(bitX.length(), bitY.length());
+        int diffLength = largerString.length() - smallerString.length();
+        
+        for(int i = 0; i < maxLength; i++)
+        {
+            bigList.add(largerString.charAt(i));
+            if(largerString.length() - i > smallerString.length())
+            {
+                smallList.add('0');
+                
+            }
+            else
+            {
+                smallList.add(smallerString.charAt(i - diffLength));
+            }
+            
+            //System.out.println(bigList.get(i) + " " + smallList.get(i));
+       
+            
+            if(!bigList.get(i).equals(smallList.get(i)))
+            {
+                diffCount++;
+            }
+        }
+       
+        
+        return diffCount;
+    }
+}
