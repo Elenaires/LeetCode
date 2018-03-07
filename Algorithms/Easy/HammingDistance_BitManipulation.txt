@@ -1,7 +1,7 @@
 class Solution {
     public int hammingDistance(int x, int y) {
         
-        // bitwise XOR - example 1001 ^ 0111 gives 1110 (difference corresponding bit gives 1, else 0)
+        // bitwise XOR - example 1001 ^ 0111 gives 1110 (different corresponding bit gives 1, else 0)
         int res = x ^ y;
         int count = 0;
         do
