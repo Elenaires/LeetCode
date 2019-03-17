@@ -1,0 +1,32 @@
+public ListNode plusOne(ListNode head) 
+{
+	if(head == null)
+	{
+		return null;
+	}
+
+	ListNode dummy = new ListNode(0);
+	ListNode i = dummy;
+	ListNode j = dummy;
+	dummy.next = head;
+
+	while(j.next != null)
+	{
+		if(j.next.val != 9)
+		{
+			i = j.next;
+		}
+		j = j.next;
+	}
+
+	i.val = i.val + 1;
+	i = i.next;
+
+	while(i != null)
+	{
+		i.val = 0;
+		i = i.next;
+	}
+
+	return (dummy.val == 0) ? dummy.next : dummy;
+}
